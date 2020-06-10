@@ -1,6 +1,8 @@
 <!-- Toolbar -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Angular 2 Simple Reddit</a>
+  <img src="https://1.bp.blogspot.com/-MwJI22_Ek_0/XJQEjL9WGjI/AAAAAAAAJSs/Kd9WAGTItDoTRoaIFLE8qwOrj3STIMbfQCK4BGAYYCw/s1600/logo%2Bangular%2Bicon.png" width="30" height="30" alt="">
+  <a class="navbar-brand" href="#">dit Training</a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,14 +10,12 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/list" routerLinkActive="active">Book List<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/book-rank" routerLinkActive="active">Book Rank<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/adit" href="#">Adit Tes</a>
+        <a class="nav-link" routerLink="/browse-app" href="#">Browse App</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
+      
     </ul>
 
   </div>
@@ -28,42 +28,22 @@
   <main role="main" class="flex-shrink-0">
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-3">Hello, {{author}} </h1>
+        <h1 class="display-3">{{checkTime()}}, {{author}} </h1>
         <div class="text-nowrap bd-highlight" style="width: 8rem;">
-        <p>Add a new <b>book</b> here. <code>|</code> Training 1 </p>
+        <p>pilih navigasi <b>diatas</b> untuk membuka aplikasi</p>
         </div>
-      </div>
-
-
-      <!-- Form -->
-      <div class="ml-5 col-4">
-        <form class="ml-4">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          
-          <!-- book name -->
-          <input #bookname id="inputName" class="form-control" placeholder="Book Name" required autofocus>
-          
-          <div class="m-1"></div>
-          
-          <!-- book link -->
-          <input #bookLink id="inputLink" class="form-control" placeholder="Book Link" required>
-          <div class="m-2"></div>
-
-          <!-- btn add -->
-          <button (click)="addArticle(bookname, bookLink, bookLink)" class="btn btn-lg btn-primary btn-block">Add Book</button>
-        </form>
       </div>
     </div>
   </main>
 
 
-  <div class="ui grid posts">
+  <!-- <div class="ui grid posts">
     <h6 class="border-bottom border-gray pb-2 mb-0">Book Rank</h6>
     <br>
     <app-article 
       *ngFor="let article of sortedArticles()" [article]="article">
     </app-article>
-  </div>
+  </div> -->
 
 </div>
 

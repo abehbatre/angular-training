@@ -3,21 +3,24 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArticleComponent } from './article/article.component';
 import { AditsComponent } from './adits/adits.component';
+import { BookrankComponent } from './bookrank/bookrank.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ArticleComponent,
-    AditsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      AditsComponent,
+      BookrankComponent,
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ],
+   exports: [BookrankComponent]
 })
 export class AppModule { }

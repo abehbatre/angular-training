@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Article } from './article/article.model';
+
+var today = new Date()
+var cTime = today.getHours()
+
 
 @Component({
   selector: 'app-root',
@@ -9,36 +12,17 @@ import { Article } from './article/article.model';
 
 export class AppComponent {
 
-
   title = 'test2';
   author = 'Adit';
 
-  articles: Article[];
+  constructor() { }
 
-  constructor() {
-    this.articles = [
-      new Article('Angular 2', 'http://angular.io', '3'),
-      new Article('Fullstack', 'content', 'http://fullstack.io', 2),
-      new Article('Angular Homepage', 'content', 'http://angular.io', 1),
-    ];
+  checkTime() : string {
+    console.log('now  : ' + cTime);
+    if (cTime >= 0 && cTime <= 10) return 'Pagi'
+    else if (cTime >= 11 && cTime <= 14) return 'Siang'
+    else if (cTime >= 15 && cTime <= 18) return 'Sore'
+    else if (cTime >= 19 && cTime <= 23)return 'Malam'
   }
-
-  addArticle(title: HTMLInputElement, content: HTMLInputElement, link: HTMLInputElement): boolean {
-    if (title.value.length > 0) {
-      this.articles.push(new Article(title.value, content.value, link.value, 0));
-      alert('buku ' + title.value  + ' telah ditambahkan')
-      
-      // reset
-      title.value = '';
-      content.value = '';
-      link.value = '';
-    } else {
-      alert('bookname cannot be empty ')
-    }
-    return false;
-  }
-
-  sortedArticles(): Article[] {
-    return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
-  }
+  
 }

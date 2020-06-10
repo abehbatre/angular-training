@@ -5,7 +5,7 @@ export class Article {
     votes: number;
 
 
-    constructor(title: string, content: string, link: string, votes?: number) {
+    constructor(title: string, content: string, link: string, votes: number) {
         this.title = title;
         this.content = content;
         this.link = link;
@@ -14,9 +14,9 @@ export class Article {
 
 
     // function ~
-    voteUp(): void {
-        this.votes += 1;
-    }
+    voteUp() : void {
+        this.votes += 1; 
+    }  
 
     voteDown(): void {
         this.votes -= 1;
@@ -24,9 +24,7 @@ export class Article {
 
     domain(): string {
         try {
-            // e.g. http://foo.com/path/to/bar
             const domainAndPath: string = this.link.split('//')[1];
-            // e.g. foo.com/path/to/bar
             return domainAndPath.split('/')[0];
         } catch (err) {
             return null;

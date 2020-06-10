@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AditsComponent } from './adits/adits.component';
-import { ArticleComponent } from './article/article.component';
+import { BookrankComponent } from './bookrank/bookrank.component';
 
 
 const routes: Routes = [
-  { path: 'list', component: ArticleComponent },
-  { path: 'adit', component: AditsComponent },
+  { path: 'book-rank', component: BookrankComponent },
+  { path: 'browse-app', component: AditsComponent },
 ];
 
 @NgModule({
