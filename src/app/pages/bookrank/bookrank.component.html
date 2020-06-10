@@ -1,0 +1,73 @@
+
+<h3 class="m-3">Input New Book</h3>
+
+<div class="row mb-3 red">
+  
+    <!-- FORM INPUT -->
+    <div class="col-md-4 themed-grid-col">
+        <form class="ml-5">
+            <div class="m-0">Book Name</div>
+            <input #bookname id="inputName" class="form-control" placeholder="ex : Harry Potter" required autofocus>
+            <div class="m-1"></div>URL
+            <input #bookLink id="inputLink" class="form-control" placeholder="ex : http://adit.web.id" required>
+            <div class="m-2"></div>
+            <button (click)="addArticle(bookname, bookLink, bookLink)" class="btn btn-lg btn-outline-dark btn-block">Add
+                New Book</button>
+        </form>
+    </div>
+
+
+    <!-- TABLE -->
+    <div class="col-md-8 themed-grid-col">
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!-- <th>No.</th> -->
+                        <th>Like Count</th>
+                        <th>Book Name</th>
+                        <th>URL</th>
+                        <th>Vote</th>
+                        <!-- <th>Action</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let article of sortedArticles(); let i = index">
+                        <!-- <td>{{i+1}}</td> -->
+                        <td><b>{{article.votes}}</b></td>
+                        <td>{{article.title}}</td>
+                        <td><a href="{{article.link}}" target="_blank">{{article.domain()}}</a></td>
+                        <td>
+                            <button (click)="article.voteDown()" type="button" class="btn btn-outline-danger">Dislike</button>
+                            &nbsp;
+                            <button (click)="article.voteUp()" type="button" class="btn btn-outline-success">Like</button>
+                        </td>
+                        <!-- <td><button data-toggle="modal" data-target="#exampleModalLong"  type="button" class="btn btn-outline-secondary">Read</button></td> -->
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- MODAL -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Read </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+
+        </div>
+    </div>
+</div>

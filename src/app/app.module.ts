@@ -3,24 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AditsComponent } from './adits/adits.component';
-import { BookrankComponent } from './bookrank/bookrank.component';
+import { BookrankComponent } from './pages/bookrank/bookrank.component';
+import { BrowseComponent } from './pages/browse/browse.component';
 
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
    declarations: [
       AppComponent,
-      AditsComponent,
       BookrankComponent,
+      BrowseComponent
    ],
    imports: [
       BrowserModule,
-      AppRoutingModule
+      AppRoutingModule,
+      HttpClientModule
    ],
    providers: [],
    bootstrap: [
       AppComponent
    ],
-   exports: [BookrankComponent]
+   exports: [
+      BookrankComponent
+   ]
 })
 export class AppModule { }

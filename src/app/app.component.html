@@ -1,8 +1,8 @@
+
 <!-- Toolbar -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <img src="https://1.bp.blogspot.com/-MwJI22_Ek_0/XJQEjL9WGjI/AAAAAAAAJSs/Kd9WAGTItDoTRoaIFLE8qwOrj3STIMbfQCK4BGAYYCw/s1600/logo%2Bangular%2Bicon.png" width="30" height="30" alt="">
-  <a class="navbar-brand" href="#">dit Training</a>
-
+  <a class="navbar-brand" routerLink="/" href="#">dit Training</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -21,31 +21,18 @@
   </div>
 </nav>
 
-
-
 <!-- Begin Content -->
 <div class="content" role="main">
   <main role="main" class="flex-shrink-0">
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-3">{{checkTime()}}, {{author}} </h1>
+        <h1 class="display-3">{{checkTime()}}, {{ipAddress}} </h1>
         <div class="text-nowrap bd-highlight" style="width: 8rem;">
         <p>pilih navigasi <b>diatas</b> untuk membuka aplikasi</p>
         </div>
       </div>
     </div>
   </main>
-
-
-  <!-- <div class="ui grid posts">
-    <h6 class="border-bottom border-gray pb-2 mb-0">Book Rank</h6>
-    <br>
-    <app-article 
-      *ngFor="let article of sortedArticles()" [article]="article">
-    </app-article>
-  </div> -->
-
 </div>
-
 
 <router-outlet></router-outlet>

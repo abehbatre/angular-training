@@ -1,9 +1,8 @@
 export class Article {
     title: string;
-    content?: String;
+    content?: String; // test null safety
     link: string;
     votes: number;
-
 
     constructor(title: string, content: string, link: string, votes: number) {
         this.title = title;
@@ -12,8 +11,6 @@ export class Article {
         this.votes = votes || 0;
     }
 
-
-    // function ~
     voteUp() : void {
         this.votes += 1; 
     }  

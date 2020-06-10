@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Article } from "./article/article.model";
+import { Article } from "./book.model";
 
 @Component({
   selector: 'app-bookrank',
@@ -9,8 +9,6 @@ import { Article } from "./article/article.model";
 })
 export class BookrankComponent implements OnInit {
 
-  articles: Article[];
-
   constructor() {
     this.articles = [
       new Article('Angular 2', null, 'http://angular.io', 4),
@@ -19,12 +17,13 @@ export class BookrankComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
+  ngOnInit(): void { }
 
+  articles: Article[];
 
   addArticle(title: HTMLInputElement, content: HTMLInputElement, link: HTMLInputElement): boolean {
+    
+    // validasi ~
     if (!link.value.includes('http')) {
       alert('link not valid');
     } else if (title.value.length == 0) {
