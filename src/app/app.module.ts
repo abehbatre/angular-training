@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookrankComponent } from './pages/bookrank/bookrank.component';
 import { BrowseComponent } from './pages/browse/browse.component';
+import { BrowseInputComponent } from './pages/browse/browse-input/browse-input.component';
 
 import { HttpClientModule } from "@angular/common/http";
 
@@ -12,7 +13,8 @@ import { HttpClientModule } from "@angular/common/http";
    declarations: [
       AppComponent,
       BookrankComponent,
-      BrowseComponent
+      BrowseComponent,
+      BrowseInputComponent,
    ],
    imports: [
       BrowserModule,

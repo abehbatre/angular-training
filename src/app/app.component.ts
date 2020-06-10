@@ -16,15 +16,24 @@ export class AppComponent {
 
   constructor(private ip: IpServiceService) { }
 
+  ngOnInit() { this.getIp(); }
+
+
+  // ----------------------------------------------------------
+  // var
+  // ----------------------------------------------------------
   title = 'test2';
   author = 'Adit';
   ipAddress: string;
 
-  ngOnInit() { this.getIp(); }
+  // menus
+  mBookRank: boolean = false;
+  mBrowseApp: boolean = false;
 
 
-
-
+  // ----------------------------------------------------------
+  // func
+  // ----------------------------------------------------------
   getIp() {
     this.ip.getIpAddress().subscribe((res: any) => {
       this.ipAddress = res.ip;

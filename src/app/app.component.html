@@ -1,35 +1,36 @@
-
 <!-- Toolbar -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <img src="https://1.bp.blogspot.com/-MwJI22_Ek_0/XJQEjL9WGjI/AAAAAAAAJSs/Kd9WAGTItDoTRoaIFLE8qwOrj3STIMbfQCK4BGAYYCw/s1600/logo%2Bangular%2Bicon.png" width="30" height="30" alt="">
-  <a class="navbar-brand" routerLink="/" href="#">dit Training</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <img
+    src="https://1.bp.blogspot.com/-MwJI22_Ek_0/XJQEjL9WGjI/AAAAAAAAJSs/Kd9WAGTItDoTRoaIFLE8qwOrj3STIMbfQCK4BGAYYCw/s1600/logo%2Bangular%2Bicon.png"
+    width="30" height="30" alt="">
+  <a (click)="mBookRank=false; mBrowseApp=false" class="navbar-brand" routerLink="/" href="#">dit Training</a>
+
+
+  <!--  MENUS  -->
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/book-rank" routerLinkActive="active">Book Rank<span class="sr-only">(current)</span></a>
+      <li class="nav-item" [ngClass]="{'active': mBookRank}">
+        <a (click)="mBookRank=true; mBrowseApp=false" class="nav-link" routerLink="/book-rank">Book Rank<span
+            class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/browse-app" href="#">Browse App</a>
+      <li class="nav-item" [ngClass]="{'active': mBrowseApp}">
+        <a (click)="mBookRank=false; mBrowseApp=true" class="nav-link" routerLink="/browse-app" href="#">Browse App</a>
       </li>
-      
+
     </ul>
 
   </div>
 </nav>
 
-<!-- Begin Content -->
+<!-- WELCoME -->
 <div class="content" role="main">
   <main role="main" class="flex-shrink-0">
     <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">{{checkTime()}}, {{ipAddress}} </h1>
         <div class="text-nowrap bd-highlight" style="width: 8rem;">
-        <p>pilih navigasi <b>diatas</b> untuk membuka aplikasi</p>
-        </div>
+          <p>pilih navigasi <b>diatas</b> untuk membuka aplikasi</p>
+        </div>      
       </div>
     </div>
   </main>
