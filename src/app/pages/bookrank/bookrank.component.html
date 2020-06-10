@@ -38,9 +38,9 @@
                         <td>{{article.title}}</td>
                         <td><a href="{{article.link}}" target="_blank">{{article.domain()}}</a></td>
                         <td>
-                            <button (click)="article.voteDown()" type="button" class="btn btn-outline-danger">Dislike</button>
+                            <button (click)="article.voteDown()" type="button" class="btn btn-outline-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
                             &nbsp;
-                            <button (click)="article.voteUp()" type="button" class="btn btn-outline-success">Like</button>
+                            <button (click)="article.voteUp()" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
                         </td>
                         <!-- <td><button data-toggle="modal" data-target="#exampleModalLong"  type="button" class="btn btn-outline-secondary">Read</button></td> -->
                     </tr>

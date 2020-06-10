@@ -1,41 +1,104 @@
 <div class="m-3">
-  <button [routerLink]="['/browse-input']" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-dark"><i class="fa fa-plus"></i> Bikin Baru</button>
 
 
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-browseList-tab" data-toggle="tab" href="#nav-browseList" role="tab"
+        aria-controls="nav-browseList" aria-selected="true">Browse List</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+        aria-controls="nav-profile" aria-selected="false">Form Buat Data Baru</a>
+    </div>
+  </nav>
 
-  <!-- TABLE -->
-  <div class="col-md-8 themed-grid-col">
-    <br>
-    <div class="">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address</th>
-            <th>Phone Number</th>
-            <th>Action 🏑</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr >
-            <td>1</td>
-            <td>ZZZ</td>
-            <td>ZZZ</td>
-            <td><a href="ZZZ" target="_blank">ZZZ</a></td>
-            <td>ZZZ</td>
-            <td>
-              <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i></button>
-              &nbsp;
-              <button type="button" class="btn btn-outline-success"><i class="fa fa-edit"></i></button>
-            </td>
-            <!-- <td><button data-toggle="modal" data-target="#exampleModalLong"  type="button" class="btn btn-outline-secondary">Read</button></td> -->
-          </tr>
-  
-        </tbody>
-      </table>
+
+  <div class="tab-content" id="nav-tabContent">
+
+    <!-- TABS LIST -->
+    <div class="tab-pane fade show active" id="nav-browseList" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="col-md-8 themed-grid-col">
+        <br>
+        <div class="">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Action 🏑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>ZZZ</td>
+                <td>ZZZ</td>
+                <td><a href="ZZZ" target="_blank">ZZZ</a></td>
+                <td>ZZZ</td>
+                <td>
+                  <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                  &nbsp;
+                  <button type="button" class="btn btn-outline-success"><i class="fa fa-edit"></i></button>
+                </td>
+                <!-- <td><button data-toggle="modal" data-target="#exampleModalLong"  type="button" class="btn btn-outline-secondary">Read</button></td> -->
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- TABS INPUT NEW -->
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+      <div class="ml-3 mt-2">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputName">First Name</label>
+              <input type="text" class="form-control" placeholder="Adit">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputName">Last Name</label>
+              <input type="text" class="form-control" placeholder="P. sgt">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="***">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPasswordR">Repeat Password</label>
+              <input type="password" class="form-control" id="inputPasswordR" placeholder="***">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress2">Address</label>
+            <input type="text" class="form-control" id="inputAddress2"
+              placeholder="1234 Main St Apartment, studio, or floor">
+          </div>
+
+          <div class="form-group">
+            <label for="inputPhone">Phone Number</label>
+            <input type="text" class="form-control" id="inputPhone" placeholder="+62">
+          </div>
+
+
+          <button type="submit" class="btn btn-outline-primary">Save</button>
+        </form>
+
+      </div>
+
     </div>
   </div>
+
+
+
 
 </div>

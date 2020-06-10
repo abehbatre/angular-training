@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookrankComponent } from './pages/bookrank/bookrank.component';
 import { BrowseComponent } from './pages/browse/browse.component';
-import { BrowseInputComponent } from './pages/browse/browse-input/browse-input.component';
+import { BrowseEditComponent } from './pages/browse/browse-edit/browse-edit.component';
 
 import { HttpClientModule } from "@angular/common/http";
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       BookrankComponent,
       BrowseComponent,
-      BrowseInputComponent,
+      BrowseEditComponent,
+      HomepageComponent
    ],
    imports: [
       BrowserModule,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IpServiceService } from './services/ip-service.service';
+import { HomePageService } from './pages/homepage/homepage.service';
 
 
 var today = new Date()
@@ -14,7 +14,7 @@ var cTime = today.getHours()
 
 export class AppComponent {
 
-  constructor(private ip: IpServiceService) { }
+  constructor(private ip: HomePageService) { }
 
   ngOnInit() { this.getIp(); }
 
@@ -22,8 +22,7 @@ export class AppComponent {
   // ----------------------------------------------------------
   // var
   // ----------------------------------------------------------
-  title = 'test2';
-  author = 'Adit';
+  title = 'Adit Training';
   ipAddress: string;
 
   // menus
