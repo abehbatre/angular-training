@@ -7,13 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BookrankComponent } from './pages/bookrank/bookrank.component';
-import { BrowseComponent } from './pages/browse/browse.component';
-import { BrowseEditComponent } from './pages/browse/browse-edit/browse-edit.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { EmployeeEditComponent } from './pages/employee/employee-edit/employee-edit.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from '../app/pages/browse/in-memory-data.service';
+import { InMemoryDataService } from '../app/pages/employee/in-memory-data.service';
 
 
 
@@ -21,8 +21,8 @@ import { InMemoryDataService } from '../app/pages/browse/in-memory-data.service'
    declarations: [
       AppComponent,
       BookrankComponent,
-      BrowseComponent,
-      BrowseEditComponent,
+      EmployeeComponent,
+      EmployeeEditComponent,
       HomepageComponent,
    ],
    imports: [

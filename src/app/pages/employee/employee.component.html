@@ -3,8 +3,8 @@
 
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-browseList-tab" data-toggle="tab" href="#nav-browseList" role="tab"
-        aria-controls="nav-browseList" aria-selected="true">Browse List</a>
+      <a class="nav-item nav-link active" id="nav-employeeList-tab" data-toggle="tab" href="#nav-employeeList" role="tab"
+        aria-controls="nav-employeeList" aria-selected="true">Employee List</a>
       <a class="nav-item nav-link" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new"
         aria-selected="false">Form Buat Data Baru</a>
     </div>
@@ -14,7 +14,7 @@
   <div class="tab-content" id="nav-tabContent">
 
     <!-- TABS LIST -->
-    <div class="tab-pane fade show active" id="nav-browseList" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div class="tab-pane fade show active" id="nav-employeeList" role="tabpanel" aria-labelledby="nav-home-tab">
       <div class="col-md-12 themed-grid-col">
         <div class="">
           <br>
@@ -31,18 +31,18 @@
               </tr>
             </thead>
             <tbody class="">
-              <tr *ngFor="let browse of mBrowse; let i = index">
+              <tr *ngFor="let employee of mEmployee; let i = index">
                 <td><b>{{i + 1}}</b></td>
-                <td>{{browse.emailAddress}}</td>
-                <td>{{browse.firstName + ' ' + browse.lastName}}</td>
-                <td>{{browse.password}}</td>
-                <td>{{browse.address}}</td>
-                <td>{{browse.phoneNumber}}</td>
+                <td>{{employee.emailAddress}}</td>
+                <td>{{employee.firstName + ' ' + employee.lastName}}</td>
+                <td>{{employee.password}}</td>
+                <td>{{employee.address}}</td>
+                <td>{{employee.phoneNumber}}</td>
                 <td>
-                  <button (click)="delete(browse)" type="button" class="btn btn-outline-danger"><i
+                  <button (click)="delete(employee)" type="button" class="btn btn-outline-danger"><i
                       class="fa fa-trash-o"></i></button>
                   &nbsp;
-                  <button routerLink="/browse-app/edit/{{browse.id}}" type="button" class="btn btn-outline-success"><i
+                  <button routerLink="/employee/edit/{{employee.id}}" type="button" class="btn btn-outline-success"><i
                       class="fa fa-edit"></i></button>
                 </td>
               </tr>
@@ -58,7 +58,7 @@
     <div class="tab-pane fade" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
 
       <div class="jumbotron">
-        <div *ngIf="mBrowse" class="ml-3">
+        <div *ngIf="mEmployee" class="ml-3">
           <form name="form" [formGroup]="fg" #formDir="ngForm" (ngSubmit)="onSubmit()">
             <!-- email -->
             <div class="form-group">

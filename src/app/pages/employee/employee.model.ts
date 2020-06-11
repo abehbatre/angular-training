@@ -1,4 +1,4 @@
-export interface Browse {
+export interface EmployeeEntity {
     id: number;
     emailAddress: string;
     firstName: string;

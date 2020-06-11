@@ -27,7 +27,7 @@ export class AppComponent {
 
   // menus
   mBookRank: boolean = false;
-  mBrowseApp: boolean = false;
+  mEmployee: boolean = false;
 
 
   // ----------------------------------------------------------

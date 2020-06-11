@@ -3,18 +3,18 @@
   <img
     src="https://1.bp.blogspot.com/-MwJI22_Ek_0/XJQEjL9WGjI/AAAAAAAAJSs/Kd9WAGTItDoTRoaIFLE8qwOrj3STIMbfQCK4BGAYYCw/s1600/logo%2Bangular%2Bicon.png"
     width="30" height="30" alt="">
-  <a (click)="mBookRank=false; mBrowseApp=false" class="navbar-brand" routerLink="/" href="#">dit Training</a>
+  <a (click)="mBookRank=false; mEmployee=false" class="navbar-brand" routerLink="/" href="#">dit Training</a>
 
 
   <!--  MENUS  -->
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [ngClass]="{'active': mBookRank}">
-        <a (click)="mBookRank=true; mBrowseApp=false" class="nav-link" routerLink="/book-rank">Book Rank<span
+        <a (click)="mBookRank=true; mEmployee=false" class="nav-link" routerLink="/book-rank">Materi 1<span
             class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" [ngClass]="{'active': mBrowseApp}">
-        <a (click)="mBookRank=false; mBrowseApp=true" class="nav-link" routerLink="/browse-app" href="#">Browse App</a>
+      <li class="nav-item" [ngClass]="{'active': mEmployee}">
+        <a (click)="mBookRank=false; mEmployee=true" class="nav-link" routerLink="/employee" href="#">Materi 2</a>
       </li>
 
     </ul>

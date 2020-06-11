@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BookrankComponent } from './pages/bookrank/bookrank.component';
-import { BrowseComponent } from './pages/browse/browse.component';
-import { BrowseEditComponent } from './pages/browse/browse-edit/browse-edit.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { EmployeeEditComponent } from './pages/employee/employee-edit/employee-edit.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 
 
@@ -14,9 +14,9 @@ const routes: Routes = [
   // book rank app
   { path: 'book-rank', component: BookrankComponent },
   
-  // browse app
-  { path: 'browse-app', component: BrowseComponent },
-  { path: 'browse-app/edit/:id', component: BrowseEditComponent },
+  // employee app
+  { path: 'employee', component: EmployeeComponent },
+  { path: 'employee/edit/:id', component: EmployeeEditComponent },
 
 ];
 

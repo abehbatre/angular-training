@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Browse } from './browse.model';
+import { EmployeeEntity } from './employee.model';
 
 @Injectable({providedIn: 'root',})
 export class InMemoryDataService implements InMemoryDbService {
 
 
   createDb() {
-    const browses = [
+    const employees = [
       {
         id: 1,
         emailAddress: 'Bakiadi_Prasasta69@yahoo.co.id',
@@ -29,10 +29,11 @@ export class InMemoryDataService implements InMemoryDbService {
         phoneNumber: '(+62) 29 1230 4403',
       },
     ];
-    return { browses };
+    return { employees: employees };
   }
 
-  genId(browse: Browse[]): number {
-    return browse.length > 0 ? Math.max(...browse.map(hero => hero.id)) + 1 : 3;
+  //  auto next id, sambung yg udah ada .. 
+  genId(employee: EmployeeEntity[]): number {
+    return employee.length > 0 ? Math.max(...employee.map(employee => employee.id)) + 1 : 3;
   }
 }

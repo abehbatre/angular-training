@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 
-import { Browse } from "./browse.model";
-import { BrowseService } from "./browse.service";
+import { EmployeeEntity } from "./employee.model";
+import { EmployeeService } from "./employee.service";
 import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
 
 import { MustMatch } from "../../helper/must-match.validator";
@@ -17,26 +17,26 @@ function phoneNumberValidator(control: FormControl): { [s: string]: boolean } {
 
 
 @Component({
-  selector: 'app-browse',
-  templateUrl: './browse.component.html',
-  styleUrls: ['./browse.component.css']
+  selector: 'app-employee',
+  templateUrl: './employee.component.html',
+  styleUrls: ['./employee.component.css']
 })
 
-export class BrowseComponent implements OnInit {
+export class EmployeeComponent implements OnInit {
 
   constructor(
-    private browseService: BrowseService,
+    private service: EmployeeService,
     private fb: FormBuilder
   ) { }
 
 
-  mBrowse: Browse[];    // api purppose  
-  fg: FormGroup;        // validation purpose
+  mEmployee: EmployeeEntity[];    // api purppose  
+  fg: FormGroup;                // validation purpose
 
 
   ngOnInit() {
     // load data on init ~
-    this.getBrowseList();
+    this.getEmployeeList();
 
     // validator on init ~
     this.fg = this.fb.group({
@@ -55,14 +55,14 @@ export class BrowseComponent implements OnInit {
 
 
 
-  getBrowseList(): void {
-    this.browseService.getBrowses()
-      .subscribe(browses => this.mBrowse = browses);
+  getEmployeeList(): void {
+    this.service.getEmployees()
+      .subscribe(employees => this.mEmployee = employees);
   }
 
-  delete(browse: Browse): void {
-    this.mBrowse = this.mBrowse.filter(b => b !== browse);
-    this.browseService.deleteBrowse(browse).subscribe();
+  delete(employee: EmployeeEntity): void {
+    this.mEmployee = this.mEmployee.filter(b => b !== employee);
+    this.service.deleteEmployee(employee).subscribe();
   }
 
   onSubmit() {
@@ -78,7 +78,7 @@ export class BrowseComponent implements OnInit {
       let repassword = values.repassword;
       let address = values.address;
       let phoneNumber = values.phoneNumber;
-      this.browseService.addBrowse({
+      this.service.addEmployee({
         emailAddress,
         firstName,
         lastName,
@@ -86,8 +86,8 @@ export class BrowseComponent implements OnInit {
         repassword,
         address,
         phoneNumber
-      } as unknown as Browse).subscribe(browse => {
-        this.mBrowse.push(browse);
+      } as unknown as EmployeeEntity).subscribe(employee => {
+        this.mEmployee.push(employee);
         alert('SUCCESS!! :-)\n\n' + this.fg.value.address)
 
         // reset form...

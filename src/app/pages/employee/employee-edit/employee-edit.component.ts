@@ -1,23 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Browse } from '../browse.model';
+import { EmployeeEntity } from '../employee.model';
 import { ActivatedRoute } from '@angular/router';
-import { BrowseService } from '../browse.service';
+import { EmployeeService } from '../employee.service';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-browse-edit',
-  templateUrl: './browse-edit.component.html',
-  styleUrls: ['./browse-edit.component.css']
+  selector: 'app-employee-edit',
+  templateUrl: './employee-edit.component.html',
+  styleUrls: ['./employee-edit.component.css']
 })
-export class BrowseEditComponent implements OnInit {
+export class EmployeeEditComponent implements OnInit {
 
-  @Input() browse: Browse;
+  @Input() mEmployee: EmployeeEntity;
 
   suksesFlag: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private service: BrowseService
+    private service: EmployeeService
   ) { }
 
   ngOnInit() {
@@ -26,12 +26,12 @@ export class BrowseEditComponent implements OnInit {
 
   getData() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.service.getBrowse(id)
-      .subscribe(res => this.browse = res);
+    this.service.getEmployee(id)
+      .subscribe(res => this.mEmployee = res);
   }
 
   update(): void {
-    this.service.updateBrowse(this.browse)
+    this.service.updateEmployee(this.mEmployee)
       .subscribe(() => {
         console.log("updated ..");
         this.suksesFlag = true;
