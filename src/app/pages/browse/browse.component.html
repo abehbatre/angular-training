@@ -5,8 +5,8 @@
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-browseList-tab" data-toggle="tab" href="#nav-browseList" role="tab"
         aria-controls="nav-browseList" aria-selected="true">Browse List</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-        aria-controls="nav-profile" aria-selected="false">Form Buat Data Baru</a>
+      <a class="nav-item nav-link" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new"
+        aria-selected="false">Form Buat Data Baru</a>
     </div>
   </nav>
 
@@ -30,20 +30,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>ZZZ</td>
-                <td>ZZZ</td>
-                <td><a href="ZZZ" target="_blank">ZZZ</a></td>
-                <td>ZZZ</td>
+              <tr *ngFor="let browse of mBrowse; let i = index">
+                <td><b>{{i + 1}}</b></td>
+                <td>{{browse.firstName}}</td>
+                <td>{{browse.lastName}}</td>
+                <td>{{browse.address}}</td>
+                <td>{{browse.phoneNumber}}</td>
                 <td>
-                  <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                  <button (click)="delete(browse)" type="button" class="btn btn-outline-danger"><i
+                      class="fa fa-trash-o"></i></button>
                   &nbsp;
-                  <button type="button" class="btn btn-outline-success"><i class="fa fa-edit"></i></button>
+                  <button routerLink="/browse-app/edit/{{browse.id}}" type="button" class="btn btn-outline-success"><i
+                      class="fa fa-edit"></i></button>
                 </td>
-                <!-- <td><button data-toggle="modal" data-target="#exampleModalLong"  type="button" class="btn btn-outline-secondary">Read</button></td> -->
               </tr>
-
             </tbody>
           </table>
         </div>
@@ -53,52 +53,105 @@
 
 
     <!-- TABS INPUT NEW -->
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class="tab-pane fade" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
 
-      <div class="ml-3 mt-2">
-        <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputName">First Name</label>
-              <input type="text" class="form-control" placeholder="Adit">
+      <div class="jumbotron">
+        <div *ngIf="mBrowse" class="ml-3">
+
+         
+
+
+          <form name="form" [formGroup]="fg" #formDir="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- email -->
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" formControlName="emailAddress" />
+
+              <div *ngIf="f.emailAddress.invalid && (f.emailAddress.dirty || f.emailAddress.touched)"
+                class="alert alert-warning" role="alert">
+                <div *ngIf="f.emailAddress.errors.required">Email Address is required.</div>
+                <div *ngIf="f.emailAddress.errors.minlength">Email Address must be at least 4 characters long.</div>
+                <div *ngIf="f.emailAddress.errors.email">Invalid Email Address format.</div>
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="inputName">Last Name</label>
-              <input type="text" class="form-control" placeholder="P. sgt">
+
+            <!-- name -->
+            <div class="form-row">
+              <div class="form-group col-md-6">
+
+                <label>First Name</label>
+                <input type="text" class="form-control" formControlName="firstName" />
+
+                <div *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)" class="alert alert-warning"
+                  role="alert">
+                  <div *ngIf="f.firstName.errors.required">First Name is required.</div>
+                  <div *ngIf="f.firstName.errors.minlength">First Name must be at least 4 characters long.</div>
+                </div>
+
+              </div>
+
+
+              <div class="form-group col-md-6">
+                <label>Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName" />
+
+                <div *ngIf="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)" class="alert alert-warning"
+                  role="alert">
+                  <div *ngIf="f.lastName.errors.required">Last Name is required.</div>
+                  <div *ngIf="f.lastName.errors.minlength">Last Name must be at least 4 characters long.</div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="***">
+
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password" />
+                
+                <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="alert alert-warning" role="alert">
+                  <div *ngIf="f.password.errors.required">Password is required.</div>
+                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters long.</div>
+                  <div *ngIf="f.password.errors.pattern">Password must contain letters, numbers, and symbol, min 6 characters.</div>
+                </div>
+              </div>
+
+
+              
+              <div class="form-group col-md-6">
+              <label>Re-Password</label>
+              <input type="password" class="form-control" formControlName="repassword" />
+              
+              <div *ngIf="f.repassword.invalid && (f.repassword.dirty || f.repassword.touched)" class="alert alert-warning" role="alert">
+                  <div *ngIf="f.repassword.errors.required">Confirm Password is required</div>
+                  <div *ngIf="f.repassword.errors.mustMatch">Passwords must match</div>
+              </div>
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="inputPasswordR">Repeat Password</label>
-              <input type="password" class="form-control" id="inputPasswordR" placeholder="***">
+
+            <div class="form-group">
+              <label for="inputAddress2">Address</label>
+              <input #address type="text" class="form-control" id="inputAddress2"
+                placeholder="1234 Main St Apartment, studio, or floor">
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="inputAddress2">Address</label>
-            <input type="text" class="form-control" id="inputAddress2"
-              placeholder="1234 Main St Apartment, studio, or floor">
-          </div>
-
-          <div class="form-group">
-            <label for="inputPhone">Phone Number</label>
-            <input type="text" class="form-control" id="inputPhone" placeholder="+62">
-          </div>
+            <div class="form-group">
+              <label for="inputPhone">Phone Number</label>
+              <input #phone type="text" class="form-control" id="inputPhone" placeholder="+62">
+            </div>
 
 
-          <button type="submit" class="btn btn-outline-primary">Save</button>
-        </form>
 
+            <div *ngIf="fg.invalid" class="alert alert-danger">
+              ups, mohon isi semua field diatas.
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="formDir.invalid">Save</button>
+          </form>
+        </div>
       </div>
 
     </div>
   </div>
-
-
-
-
 </div>

@@ -8,7 +8,6 @@ var rQ = [
   "jalan-jalan ke kota jepang jangan lupa beli kerupuk buat apa ke kota jepang kalo cuma buat beli kerupuk ~  "
 ]
 
-
 // const randomQoute = rQ[Math.floor(Math.random() * rQ.length)];
 
 

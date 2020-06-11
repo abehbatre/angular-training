@@ -16,7 +16,7 @@ const routes: Routes = [
   
   // browse app
   { path: 'browse-app', component: BrowseComponent },
-  { path: 'browse-app/edit', component: BrowseEditComponent },
+  { path: 'browse-app/edit/:id', component: BrowseEditComponent },
 
 ];
 

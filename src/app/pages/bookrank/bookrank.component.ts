@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Article } from "./book.model";
+import { Article } from "./bookrank.model";
 
 @Component({
   selector: 'app-bookrank',

@@ -8,8 +8,6 @@ import { Browse } from './browse.model';
 
 
 @Injectable({ providedIn: 'root' })
-
-
 export class BrowseService {
 
   private browseApi = 'api/browses';  // URL to web api (private)
@@ -22,14 +20,36 @@ export class BrowseService {
   constructor(private http: HttpClient) { }
 
 
-
   /** GET Browses List */
   getBrowses(): Observable<Browse[]> {
     return this.http.get<Browse[]>(this.browseApi)
       .pipe(
-        tap(_ => console.log('fetched heroes')),
-        catchError(this.handleError<Browse[]>('getHeroes', []))
+        tap(_ => console.log('fetched Browse')),
+        catchError(this.handleError<Browse[]>('getBrowse', []))
       );
+  }
+
+  /** GET Browse by (ID) */
+
+
+  /** ADD Browse */
+  addBrowse(browse: Browse): Observable<Browse> {
+    return this.http.post<Browse>(this.browseApi, browse, this.httpOptions);
+  }
+
+
+  /** EDIT Browse */
+
+
+  /** DELETE Browse */
+  deleteBrowse(browse: Browse | number): Observable<Browse> {
+    const id = typeof browse === 'number' ? browse : browse.id;
+    const url = `${this.browseApi}/${id}`;
+
+    return this.http.delete<Browse>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted data id=${id}`)),
+      catchError(this.handleError<Browse>('on delete'))
+    );
   }
 
 

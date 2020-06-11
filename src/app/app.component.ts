@@ -40,7 +40,6 @@ export class AppComponent {
   }
 
   checkTime(): string {
-    console.log('now  : ' + cTime);
     if (cTime >= 0 && cTime <= 10) return 'Pagi'
     else if (cTime >= 11 && cTime <= 14) return 'Siang'
     else if (cTime >= 15 && cTime <= 18) return 'Sore'
