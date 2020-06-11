@@ -22,18 +22,26 @@
   </div>
 </nav>
 
-<!-- WELCoME -->
-<div class="content" role="main">
-  <main role="main" class="flex-shrink-0">
-    <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">{{checkTime()}}, {{ipAddress}} </h1>
-        <div class="text-nowrap bd-highlight" style="width: 8rem;">
-          <p>pilih navigasi <b>diatas</b> untuk membuka aplikasi</p>
-        </div>      
-      </div>
-    </div>
-  </main>
+<div class="bdikit">
+<div class="alert alert-success">
+  <h1><span class="badge badge-secondary">aL4y t1m3</span> </h1>
+  <blockquote class="blockquote">
+    <p class="mb-0">{{aQoute}}</p>
+    <footer class="blockquote-footer">qoute ini ditulis oleh <cite title="Source Title"><a
+          href="https://www.facebook.com/pantat.berkeringat/posts/1194756463884736" target="_blank">
+          <b><i class="fa fa-facebook-official"> </i> Aditya P. </b></a>&nbsp; | &nbsp; 2012 - 2015
+      </cite>
+    </footer>
+  </blockquote>
+
+  <button (click)="loadQoute()" type="button" class="btn btn-outline-dark">Load Other Qoute</button>
+
+
+  <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
 </div>
+</div>
+
 
 <router-outlet></router-outlet>

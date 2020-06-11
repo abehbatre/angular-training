@@ -5,6 +5,7 @@ import { EmployeeService } from "./employee.service";
 import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
 
 import { MustMatch } from "../../helper/must-match.validator";
+import { Router } from '@angular/router';
 
 
 function phoneNumberValidator(control: FormControl): { [s: string]: boolean } {
@@ -26,7 +27,7 @@ export class EmployeeComponent implements OnInit {
 
   constructor(
     private service: EmployeeService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }
 
 
@@ -95,5 +96,4 @@ export class EmployeeComponent implements OnInit {
       });
     }
   }
-
 }

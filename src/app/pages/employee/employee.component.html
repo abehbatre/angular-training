@@ -16,7 +16,7 @@
     <!-- TABS LIST -->
     <div class="tab-pane fade show active" id="nav-employeeList" role="tabpanel" aria-labelledby="nav-home-tab">
       <div class="col-md-12 themed-grid-col">
-        <div class="">
+        <div *ngIf="mEmployee">
           <br>
           <table class="table table-bordered table-hovers">
             <thead class="thead-dark">
@@ -48,6 +48,12 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        
+        <div *ngIf="!mEmployee">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
         </div>
       </div>
 
