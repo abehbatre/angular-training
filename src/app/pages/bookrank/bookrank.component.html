@@ -1,10 +1,7 @@
-
-<h3 class="m-3">Input New Book</h3>
-
 <div class="row mb-3 red">
-  
+
     <!-- FORM INPUT -->
-    <div class="col-md-4 themed-grid-col">
+    <div class="jumbotron col-md-4 themed-grid-col">
         <form class="ml-5">
             <div class="m-0">Book Name</div>
             <input #bookname id="inputName" class="form-control" placeholder="ex : Harry Potter" required autofocus>
@@ -15,6 +12,7 @@
                 New Book</button>
         </form>
     </div>
+
 
 
     <!-- TABLE -->
@@ -38,9 +36,11 @@
                         <td>{{article.title}}</td>
                         <td><a href="{{article.link}}" target="_blank">{{article.domain()}}</a></td>
                         <td>
-                            <button (click)="article.voteDown()" type="button" class="btn btn-outline-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                            <button (click)="article.voteDown()" type="button" class="btn btn-outline-danger"><i
+                                    class="fa fa-thumbs-down" aria-hidden="true"></i></button>
                             &nbsp;
-                            <button (click)="article.voteUp()" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                            <button (click)="article.voteUp()" type="button" class="btn btn-outline-success"><i
+                                    class="fa fa-thumbs-up" aria-hidden="true"></i></button>
                         </td>
                         <!-- <td><button data-toggle="modal" data-target="#exampleModalLong"  type="button" class="btn btn-outline-secondary">Read</button></td> -->
                     </tr>

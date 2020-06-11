@@ -30,16 +30,26 @@ export class BrowseService {
   }
 
   /** GET Browse by (ID) */
+  getBrowse(id: number): Observable<Browse> {
+    const url = `${this.browseApi}/${id}`;
+    return this.http.get<Browse>(url).pipe(
+      tap(_ => console.log(`fetched Browse id=${id}`))
+    );
+  }
 
-
-  /** ADD Browse */
+  /** INSERT Browse */
   addBrowse(browse: Browse): Observable<Browse> {
     return this.http.post<Browse>(this.browseApi, browse, this.httpOptions);
   }
 
 
-  /** EDIT Browse */
-
+  /** UPDATE Browse */
+  updateBrowse(browse: Browse): Observable<any> {
+    return this.http.put(this.browseApi, browse, this.httpOptions).pipe(
+      tap(_ => console.log(`updated browse id=${browse.id}`)),
+      catchError(this.handleError<any>('updateBrowse'))
+    );
+  }
 
   /** DELETE Browse */
   deleteBrowse(browse: Browse | number): Observable<Browse> {
