@@ -15,25 +15,27 @@
 
     <!-- TABS LIST -->
     <div class="tab-pane fade show active" id="nav-browseList" role="tabpanel" aria-labelledby="nav-home-tab">
-      <div class="col-md-8 themed-grid-col">
-        <br>
+      <div class="col-md-12 themed-grid-col">
         <div class="">
-          <table class="table">
-            <thead>
+          <br>
+          <table class="table table-bordered table-hovers">
+            <thead class="thead-dark">
               <tr>
                 <th>No.</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Password</th>
                 <th>Address</th>
                 <th>Phone Number</th>
                 <th>Action 🏑</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="">
               <tr *ngFor="let browse of mBrowse; let i = index">
                 <td><b>{{i + 1}}</b></td>
-                <td>{{browse.firstName}}</td>
-                <td>{{browse.lastName}}</td>
+                <td>{{browse.emailAddress}}</td>
+                <td>{{browse.firstName + ' ' + browse.lastName}}</td>
+                <td>{{browse.password}}</td>
                 <td>{{browse.address}}</td>
                 <td>{{browse.phoneNumber}}</td>
                 <td>
@@ -58,7 +60,7 @@
       <div class="jumbotron">
         <div *ngIf="mBrowse" class="ml-3">
 
-         
+
 
 
           <form name="form" [formGroup]="fg" #formDir="ngForm" (ngSubmit)="onSubmit()">
@@ -66,7 +68,7 @@
             <!-- email -->
             <div class="form-group">
               <label>Email</label>
-              <input type="email" class="form-control" formControlName="emailAddress" />
+              <input type="email" class="form-control" formControlName="emailAddress" placeholder="example@domain.com"/>
 
               <div *ngIf="f.emailAddress.invalid && (f.emailAddress.dirty || f.emailAddress.touched)"
                 class="alert alert-warning" role="alert">
@@ -81,10 +83,10 @@
               <div class="form-group col-md-6">
 
                 <label>First Name</label>
-                <input type="text" class="form-control" formControlName="firstName" />
+                <input type="text" class="form-control" formControlName="firstName" placeholder="Ex : Adit" />
 
-                <div *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)" class="alert alert-warning"
-                  role="alert">
+                <div *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)"
+                  class="alert alert-warning" role="alert">
                   <div *ngIf="f.firstName.errors.required">First Name is required.</div>
                   <div *ngIf="f.firstName.errors.minlength">First Name must be at least 4 characters long.</div>
                 </div>
@@ -94,7 +96,7 @@
 
               <div class="form-group col-md-6">
                 <label>Last Name</label>
-                <input type="text" class="form-control" formControlName="lastName" />
+                <input type="text" class="form-control" formControlName="lastName" placeholder="Ex : P. sgt" />
 
                 <div *ngIf="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)" class="alert alert-warning"
                   role="alert">
@@ -108,37 +110,48 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>Password</label>
-                <input type="password" class="form-control" formControlName="password" />
-                
-                <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="alert alert-warning" role="alert">
+                <input type="password" class="form-control" formControlName="password" placeholder="***"/>
+
+                <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="alert alert-warning"
+                  role="alert">
                   <div *ngIf="f.password.errors.required">Password is required.</div>
                   <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters long.</div>
-                  <div *ngIf="f.password.errors.pattern">Password must contain letters, numbers, and symbol, min 6 characters.</div>
+                  <div *ngIf="f.password.errors.pattern">Password must contain letters, numbers, and symbol, min 6
+                    characters.</div>
                 </div>
               </div>
 
 
-              
+
               <div class="form-group col-md-6">
-              <label>Re-Password</label>
-              <input type="password" class="form-control" formControlName="repassword" />
-              
-              <div *ngIf="f.repassword.invalid && (f.repassword.dirty || f.repassword.touched)" class="alert alert-warning" role="alert">
+                <label>Re-Password</label>
+                <input type="password" class="form-control" formControlName="repassword"  placeholder="***" />
+
+                <div *ngIf="f.repassword.invalid && (f.repassword.dirty || f.repassword.touched)"
+                  class="alert alert-warning" role="alert">
                   <div *ngIf="f.repassword.errors.required">Confirm Password is required</div>
-                  <div *ngIf="f.repassword.errors.mustMatch">Passwords must match</div>
-              </div>
+                  <div *ngIf="f.repassword.errors.mustMatch">Passwords not match</div>
+                </div>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="inputAddress2">Address</label>
-              <input #address type="text" class="form-control" id="inputAddress2"
+              <label>Address</label>
+              <input type="text" class="form-control" formControlName="address"
                 placeholder="1234 Main St Apartment, studio, or floor">
             </div>
 
             <div class="form-group">
-              <label for="inputPhone">Phone Number</label>
-              <input #phone type="text" class="form-control" id="inputPhone" placeholder="+62">
+              <label>Phone Number</label>
+              <input type="text" class="form-control" formControlName="phoneNumber" placeholder="+62">
+
+
+              <div *ngIf="f.phoneNumber.invalid && (f.phoneNumber.dirty || f.phoneNumber.touched)" class="alert alert-warning" role="alert">
+
+                <div *ngIf="f.phoneNumber.errors.invalidPhone" class="ui error message">Invalid phone number, must begin with
+                <span>+62</span></div>
+              
+              </div>
             </div>
 
 
@@ -146,7 +159,7 @@
             <div *ngIf="fg.invalid" class="alert alert-danger">
               ups, mohon isi semua field diatas.
             </div>
-
+            <!-- <button (click)="formDir.reset()" class="btn btn-danger">Reset</button>&nbsp; -->
             <button type="submit" class="btn btn-primary" [disabled]="formDir.invalid">Save</button>
           </form>
         </div>

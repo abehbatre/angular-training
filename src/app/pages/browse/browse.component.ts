@@ -45,6 +45,8 @@ export class BrowseComponent implements OnInit {
       'lastName': new FormControl('', [Validators.required, Validators.minLength(4),]),
       'password': new FormControl('', [Validators.compose([Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[!@#\$%\^&\*])(?=.{6,})/)])]),
       'repassword': new FormControl('', [Validators.required]),
+      'address': new FormControl('',),
+      'phoneNumber': new FormControl('', [Validators.compose([Validators.required, phoneNumberValidator])]),
     }, { validator: MustMatch('password', 'repassword') });
   }
 
@@ -86,7 +88,7 @@ export class BrowseComponent implements OnInit {
         phoneNumber
       } as unknown as Browse).subscribe(browse => {
         this.mBrowse.push(browse);
-        alert('SUCCESS!! :-)\n\n' + this.fg.value.firstName)
+        alert('SUCCESS!! :-)\n\n' + this.fg.value.address)
 
         // reset form...
         this.fg.reset();
