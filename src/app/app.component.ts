@@ -6,7 +6,7 @@ var rQ = [
   "kamu hanya mengenalku sebatas $ (guest), jika kamu mengenalku seluas # (root) , kamu pasti menyukaiku .",
   "seandainya sifat ku seperti 'variabel' bukan konstanta .",
   "aku bagimu seperti internet explorer dipake cuma untuk download browser lain . agar kamu bisa lebih nyaman, kurang baik apa coba! aku tau aku lelet, tidak staylist, sering dibulli sama browser lain dan tidak kaya akan fitur.",
-  "jalan-jalan ke kota jepang jangan lupa beli kerupuk buat apa ke kota jepang kalo cuma buat beli kerupuk ~  "
+  "if (mood < 40) callMom(); "
 ]
 
 

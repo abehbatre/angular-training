@@ -10,7 +10,7 @@
             <!-- book name -->
             <div class="form-group">
                 <label>Book Name</label>
-                <input formControlName="bookName" class="form-control" placeholder="ex : Harry Potter">
+                <input formControlName="bookName" class="form-control" placeholder="ex : Harry Potter" autofocus>
                 <div *ngIf="f.bookName.invalid && (f.bookName.dirty || f.bookName.touched)" class="alert alert-warning"
                     role="alert">
                     <div *ngIf="f.bookName.errors.required">Book Name is required.</div>
@@ -53,7 +53,7 @@
                         <!-- <td>{{i+1}}</td> -->
                         <td><b>{{article.votes}}</b></td>
                         <td>{{article.title}}</td>
-                        <td><a href="{{article.link}}" target="_blank">{{article.domain()}}</a></td>
+                        <td><a href="{{article.link}}" target="_blank">{{article.link}}</a></td>
                         <td>
                             <button (click)="article.voteDown()" type="button" class="btn btn-outline-danger"><i
                                     class="fa fa-thumbs-down" aria-hidden="true"></i></button>

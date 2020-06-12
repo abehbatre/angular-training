@@ -42,15 +42,22 @@ export class BookrankComponent implements OnInit {
 
 
   onSubmit() {
-    if (this.fg.invalid) return; // check invalid first ...
+    if (this.fg.invalid) return; // check form group first ...
 
     console.log('@proses : ' + this.fg.value.bookName);
     let values = this.fg.value;
     let _bookName = values.bookName;
-    let _bookURL = values.bookURL;
+    let _bookURL: string = values.bookURL;
+
+
+    // prefix url 
+    if (!_bookURL.includes('http')) {
+      _bookURL = 'https://' + _bookURL;
+    }
 
     this.articles.push(new Article(_bookName, _bookURL, 0));
     alert('buku ' + _bookName + ' telah ditambahkan')
+    this.fg.reset();
   }
 
   sortedArticles(): Article[] {
