@@ -1,5 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Article } from "./bookrank.model";
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
+
+var ehttp = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+
+
 
 @Component({
   selector: 'app-bookrank',
@@ -9,35 +15,42 @@ import { Article } from "./bookrank.model";
 })
 export class BookrankComponent implements OnInit {
 
-  constructor() {
+  articles: Article[];
+  fg: FormGroup;
+  get f() { return this.fg.controls; }
+
+  constructor(
+    private fb: FormBuilder,
+  ) {
+
+    // create dummy article 
     this.articles = [
-      new Article('Angular 2', null, 'http://angular.io', 4),
-      new Article('Fullstack', 'content', 'http://fullstack.io', 2),
-      new Article('Angular Homepage', 'content', 'http://angular.io', 1)
+      new Article('Angular 2', 'http://angular.io', 4),
+      new Article('Fullstack', 'http://fullstack.io', 2),
+      new Article('Adit Web', 'https://adit.web.id', 1)
     ];
+
+    // validation 
+    this.fg = this.fb.group({
+      'bookName': new FormControl('', [Validators.required, Validators.minLength(4),]),
+      'bookURL': new FormControl('', [Validators.required, Validators.pattern(ehttp),]),
+    })
   }
+
 
   ngOnInit(): void { }
 
-  articles: Article[];
 
-  addArticle(title: HTMLInputElement, content: HTMLInputElement, link: HTMLInputElement): boolean {
-    
-    // validasi ~
-    if (!link.value.includes('http')) {
-      alert('link not valid');
-    } else if (title.value.length == 0) {
-      alert('bookname cannot be empty ')
-    } else {
-      this.articles.push(new Article(title.value, content.value, link.value, 0));
-      alert('buku ' + title.value + ' telah ditambahkan')
+  onSubmit() {
+    if (this.fg.invalid) return; // check invalid first ...
 
-      // reset
-      title.value = '';
-      content.value = '';
-      link.value = '';
-    }
-    return false;
+    console.log('@proses : ' + this.fg.value.bookName);
+    let values = this.fg.value;
+    let _bookName = values.bookName;
+    let _bookURL = values.bookURL;
+
+    this.articles.push(new Article(_bookName, _bookURL, 0));
+    alert('buku ' + _bookName + ' telah ditambahkan')
   }
 
   sortedArticles(): Article[] {

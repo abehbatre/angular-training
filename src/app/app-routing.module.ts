@@ -11,10 +11,10 @@ const routes: Routes = [
   // homepage
   { path: '', component: HomepageComponent },
 
-  // book rank app
+  // book rank app (materi 1 : introduction)
   { path: 'book-rank', component: BookrankComponent },
   
-  // employee app
+  // employee app (materi 2 : form validation)
   { path: 'employee', component: EmployeeComponent },
   { path: 'employee/edit/:id', component: EmployeeEditComponent },
 

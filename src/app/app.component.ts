@@ -25,7 +25,6 @@ export class AppComponent {
   mBookRank: boolean = false;
   mEmployee: boolean = false;
   title = 'Adit Training';
-  ipAddress: string;
   aQoute: string = rQ[Math.floor(Math.random() * rQ.length)];
 
   // func
@@ -33,8 +32,5 @@ export class AppComponent {
     console.log('getting new qoute : ' + this.aQoute);
     this.aQoute = rQ[Math.floor(Math.random() * rQ.length)]; // re random
   }
-
-
-
 
 }

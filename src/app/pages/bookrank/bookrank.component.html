@@ -1,15 +1,34 @@
-<div class="row mb-3 red">
+<div class="m-3">
+    <h2><span class="badge badge-primary">Materi 1</span> : Angular Introduction</h2>
+</div>
 
+<div class="row mb-3 red">
     <!-- FORM INPUT -->
     <div class="jumbotron col-md-4 themed-grid-col">
-        <form class="ml-5">
-            <div class="m-0">Book Name</div>
-            <input #bookname id="inputName" class="form-control" placeholder="ex : Harry Potter" required autofocus>
-            <div class="m-1"></div>URL
-            <input #bookLink id="inputLink" class="form-control" placeholder="ex : http://adit.web.id" required>
-            <div class="m-2"></div>
-            <button (click)="addArticle(bookname, bookLink, bookLink)" class="btn btn-lg btn-outline-dark btn-block">Add
-                New Book</button>
+        <form name="form" [formGroup]="fg" #formDir="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- book name -->
+            <div class="form-group">
+                <label>Book Name</label>
+                <input formControlName="bookName" class="form-control" placeholder="ex : Harry Potter">
+                <div *ngIf="f.bookName.invalid && (f.bookName.dirty || f.bookName.touched)" class="alert alert-warning"
+                    role="alert">
+                    <div *ngIf="f.bookName.errors.required">Book Name is required.</div>
+                    <div *ngIf="f.bookName.errors.minlength">Book Name must be at least 4 characters long.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>URL</label>
+                <input formControlName="bookURL" class="form-control" placeholder="ex : http://adit.web.id">
+
+                <div *ngIf="f.bookURL.invalid && (f.bookURL.dirty || f.bookURL.touched)" class="alert alert-warning"
+                    role="alert">
+                    <div *ngIf="f.bookURL.errors.required">Book Link is required.</div>
+                    <div *ngIf="f.bookURL.errors.pattern">please insert valid URL.</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark btn-lg" [disabled]="formDir.invalid">Save</button>
         </form>
     </div>
 

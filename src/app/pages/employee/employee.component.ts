@@ -14,9 +14,6 @@ function phoneNumberValidator(control: FormControl): { [s: string]: boolean } {
   }
 }
 
-
-
-
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -89,7 +86,7 @@ export class EmployeeComponent implements OnInit {
         phoneNumber
       } as unknown as EmployeeEntity).subscribe(employee => {
         this.mEmployee.push(employee);
-        alert('SUCCESS!! :-)\n\n' + this.fg.value.address)
+        alert('SUCCESS!! :-)\n\n' + 'data sukses ditambahkan');
 
         // reset form...
         this.fg.reset();

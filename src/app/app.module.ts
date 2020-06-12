@@ -13,7 +13,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from '../app/pages/employee/in-memory-data.service';
+import { EmployeeMockService } from './pages/employee/employee.mock.service';
 
 
 
@@ -36,7 +36,7 @@ import { InMemoryDataService } from '../app/pages/employee/in-memory-data.servic
       // and returns simulated server responses.
       // Remove it when a real server is ready to receive requests.
       HttpClientInMemoryWebApiModule.forRoot(
-         InMemoryDataService, { dataEncapsulation: false }
+         EmployeeMockService, { dataEncapsulation: false }
       )
    ],
    providers: [],

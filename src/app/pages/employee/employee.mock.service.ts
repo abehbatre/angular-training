@@ -3,7 +3,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { EmployeeEntity } from './employee.model';
 
 @Injectable({providedIn: 'root',})
-export class InMemoryDataService implements InMemoryDbService {
+export class EmployeeMockService implements InMemoryDbService {
 
 
   createDb() {
@@ -32,7 +32,7 @@ export class InMemoryDataService implements InMemoryDbService {
     return { employees: employees };
   }
 
-  //  auto next id, sambung yg udah ada .. 
+  //  auto generate id | .. 
   genId(employee: EmployeeEntity[]): number {
     return employee.length > 0 ? Math.max(...employee.map(employee => employee.id)) + 1 : 3;
   }
