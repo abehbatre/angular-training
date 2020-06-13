@@ -16,4 +16,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:**4200**/`. The a
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [angular material](https://material.angular.io/components/categories)
+- [fxLayout](https://tburleson-layouts-demos.firebaseapp.com/)
+- [material.io | icon](https://material.io/resources/icons/?icon=sync&style=baseline)
