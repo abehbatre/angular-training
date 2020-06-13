@@ -1,51 +1,27 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
-import { BookrankComponent } from './pages/bookrank/bookrank.component';
-import { EmployeeComponent } from './pages/employee/employee.component';
-import { EmployeeEditComponent } from './pages/employee/employee-edit/employee-edit.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-
-
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { EmployeeMockService } from './pages/employee/employee.mock.service';
-
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DefaultModule } from './layout/default/default.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 @NgModule({
-   declarations: [
-      AppComponent,
-      BookrankComponent,
-      EmployeeComponent,
-      EmployeeEditComponent,
-      HomepageComponent,
-   ],
-   imports: [
-      BrowserModule,
-      FormsModule,
-      ReactiveFormsModule,
-      AppRoutingModule,
-      HttpClientModule,
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    DefaultModule,
+    HttpClientModule,
+  ],
+  providers: [
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
 
-      // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-      // and returns simulated server responses.
-      // Remove it when a real server is ready to receive requests.
-      HttpClientInMemoryWebApiModule.forRoot(
-         EmployeeMockService, { dataEncapsulation: false }
-      )
-   ],
-   providers: [],
-   bootstrap: [
-      AppComponent
-   ]
-   // ,
-   // exports: [
-   //    BookrankComponent
-   // ]
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

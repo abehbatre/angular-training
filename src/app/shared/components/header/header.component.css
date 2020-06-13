@@ -1,0 +1,9 @@
+ul li {
+  list-style: none;
+}
+
+img {
+  margin-top: 12px;
+  margin-left: 10px;
+  text-align: right;
+}

@@ -1,10 +1,32 @@
-.jumbotron {
-    background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/04/Hirosaki-kanade-kawaii-wallpaper-HD.png);
-    background: #d9f5db;
-    background-size: cover;
-    height: 70%;
+section {
+    display: table;
+    margin: 8px;
 }
 
-.bdikit {
-    margin-top: 3em;
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    width: 120px;
+}
+
+.example-button-row {
+    display: table-cell;
+}
+
+.example-button-row button {
+    display: table-cell;
+    margin-right: 8px;
+}
+
+.example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
 }

@@ -1,0 +1,31 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <img
+              src="{{avatar}}">
+          </div>
+          <mat-card-title>Adit P.</mat-card-title>
+          <mat-card-subtitle>contact@adit.web.id</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    <h2 matSubheader>Home</h2>
+    <a mat-list-item routerLink="/" routerLinkActive="list-item-active">
+      <mat-icon>home_work</mat-icon> Dashboard
+    </a>
+    <h2 matSubheader>Training</h2>
+    <a mat-list-item routerLink="/materi-1" routerLinkActive="list-item-active"><mat-icon>book</mat-icon>Materi 1</a>
+    <a mat-list-item routerLink="/materi-2" routerLinkActive="list-item-active">
+      <mat-icon>featured_play_list</mat-icon> Materi 2
+    </a>
+
+  </div>
+</mat-nav-list>
+
+
+
+<mat-divider></mat-divider>

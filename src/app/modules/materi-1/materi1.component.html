@@ -1,0 +1,131 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="OUTPUT">
+
+    <div class="adit-top">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="mat-body-1">
+              Input Buku Baru
+            </div>
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+        <!-- CONTENT -->
+        <form name="form" [formGroup]="fg" #formDir (ngSubmit)="onSubmit()">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nama Buku</mat-label>
+            <input formControlName="bookName" matInput placeholder="Ex. Harry Potter">
+
+            <!-- is invalid? -->
+            <mat-error *ngIf="fc.bookName.invalid && (fc.bookName.dirty || fc.bookName.touched)">
+              <mat-error *ngIf="fc.bookName.errors.minlength">
+                Book Name must be at least 4 characters long
+              </mat-error>
+              <mat-error *ngIf="fc.bookName.errors.required">
+                Book Name is <strong>required</strong>
+              </mat-error>
+            </mat-error>
+
+
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>URL Buku</mat-label>
+            <input formControlName="bookURL" matInput placeholder="Ex. http://adit.web.id">
+
+            <!-- is invalid? -->
+            <mat-error *ngIf="fc.bookURL.invalid && (fc.bookURL.dirty || fc.bookURL.touched)">
+              <mat-error *ngIf="fc.bookURL.errors.pattern">
+                Invalid Url
+              </mat-error>
+              <mat-error *ngIf="fc.bookURL.errors.required">
+                Book Name is <strong>required</strong>
+              </mat-error>
+            </mat-error>
+
+          </mat-form-field>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button (click)="onSubmit()" mat-raised-button [disabled]="formDir.invalid">Submit</button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+
+    </div>
+
+
+
+    <div class="adit-top">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Tabel Buku</mat-card-title>
+          <mat-card-subtitle>Daftar Buku yang ada di sistem</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+
+          <!-- TABLE -->
+          <table>
+            <thead>
+              <tr>
+                <th>Like Count</th>
+                <th>Book Name</th>
+                <th>URL</th>
+                <th>Vote</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let article of sortedArticles(); let i = index">
+                <td><b>{{article.votes}}</b></td>
+                <td>{{article.title}}</td>
+                <td><a href="{{article.link}}" target="_blank">{{article.link}}</a></td>
+                <td>
+                  <button (click)="voteDown(article)" mat-icon-button color="warn">
+                    <mat-icon>thumb_down</mat-icon>
+                  </button>
+                  <button (click)="voteUp(article)" mat-icon-button color="primary">
+                    <mat-icon>thumb_up</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+  </mat-tab>
+
+
+  <mat-tab label="OVERVIEW">
+    <div class="adit-top">
+
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Overview Materi 1</mat-card-title>
+          <mat-card-subtitle>Materi ini sudah mencakup : </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Seluruh Fundamental Dasar
+              <code>
+                Component Interactive, Module, Directive, DI, dkk
+              </code>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem">In-app Navigation <code>(Routing)</code></mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem">Form Validation <code>(Reactive)</code></mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem">Angular Material <code>Material Design components for Angular
+              </code>
+            </mat-list-item>
+
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

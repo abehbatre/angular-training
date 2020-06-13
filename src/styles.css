@@ -1,54 +1,42 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-.ui.menu .item img.logo {
-    margin-right: 1.5em;
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+
+html,
+body {
+  height: 100%;
 }
 
-form.ui.segment.form {
-    background-color: #F1F9FF;
-    margin-top: 2em;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
 }
 
-form.form:after {
-    content: '';
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+
+.adit-top {
+  margin-top: 20px;
 }
 
-.votes {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #E6E6E6;
-    padding: 1em 0;
-    border-radius: 5px;
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 50px auto;
 }
 
-.ui.grid.posts {
-    margin-top: 2em;
-    margin-left: 8em;
-    margin-right: 8em;
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: rgba(223, 223, 223, 0.1)
 }
 
-.meta {
-    color: #9A9A9A
+th {
+  background: #ffffff;
+  color: rgb(142, 142, 142);
 }
 
-.ui.grid>.row>.column.votes {
-    display: flex;
-}
-
-ul.ui.list li:before {
-    content: '';
-}
-
-.voters {
-    clear: both;
-    width: 100%;
-}
-
-a {
-    text-decoration: none;
-    color: rgba(58, 124, 211, 0.863);
+td,
+th {
+  padding: 15px;
+  text-align: left;
 }
