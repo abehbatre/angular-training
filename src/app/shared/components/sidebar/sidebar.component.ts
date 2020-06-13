@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  avatar = "https://png.pngtree.com/png-clipart/20190906/original/pngtree-couple-avatar-boy-avatar-cartoon-cute-png-image_4566617.jpg";
-  constructor() { }
+
+  profile: any = [];
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getProfile();
   }
 
+  getProfile() {
+    this.apiService.getProfile().subscribe((data: {}) => {
+      console.log(data);
+      this.profile = data;
+    });
+  }
 }
