@@ -1,8 +1,8 @@
 <div class="adit-top">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>title</mat-card-title>
-      <mat-card-subtitle>subtitle</mat-card-subtitle>
+      <mat-card-title>Edit  Data: {{employees.firstName}} {{employees.lastName}}</mat-card-title>
+      <mat-card-subtitle>+62  {{employees.phoneNumber}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <form name="form" [formGroup]="fg" #formDir="ngForm" (ngSubmit)="onSubmit()">
@@ -63,7 +63,7 @@
           <!-- repeat password -->
           <mat-form-field class="example-full-width">
             <mat-label>Repeat Password</mat-label>
-            <input [(ngModel)]="employees.repeatPassword" formControlName="repassword" matInput
+            <input  formControlName="repassword" matInput
               type="password" placeholder="Ex. ***">
             <!-- isValid? -->
             <mat-error *ngIf="fc.repassword.invalid && (fc.repassword.dirty || fc.repassword.touched)">
@@ -86,10 +86,11 @@
             placeholder="555-555-1234">
         </mat-form-field>
 
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <mat-error fxFlex>
             <div *ngIf="fg.invalid"> ups, mohon isi semua field diatas.</div>
           </mat-error>
+          <button (click)="back()" mat-raised-button color="warn">Cancel</button>
           <button mat-raised-button [disabled]="fg.invalid">Submit</button>
         </div>
       </form>

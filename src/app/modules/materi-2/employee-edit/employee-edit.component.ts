@@ -74,8 +74,12 @@ export class EmployeeEditComponent implements OnInit {
         console.log("id : " + this.employees.id + "updated");
         console.log("name : " + this.employees.firstName + "updated");
         this.suksesFlag = true;
-        this.location.back();
+        this.back();
       });
+  }
+
+  back() {
+    this.location.back();
   }
  
 } 

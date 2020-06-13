@@ -12,16 +12,29 @@
         </mat-expansion-panel-header>
         <!-- CONTENT -->
         <form name="form" [formGroup]="fg" #formDir (ngSubmit)="onSubmit()">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nama Buku</mat-label>
-            <input formControlName="bookName" matInput placeholder="Ex. Harry Potter">
 
-            <!-- is invalid? -->
-            <mat-error *ngIf="fc.bookName.invalid && (fc.bookName.dirty || fc.bookName.touched)">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nama Buku</mat-label>
+              <input formControlName="bookName" matInput placeholder="Ex. Harry Potter">
+              <mat-error *ngIf="fc.bookName.invalid && (fc.bookName.dirty || fc.bookName.touched)">
                 <div *ngIf="fc.bookName.errors.required">Book Name is required.</div>
                 <div *ngIf="fc.bookName.errors.minlength">Book Name must be at least 4 characters long.</div>
-            </mat-error>
-          </mat-form-field>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex class="example-full-width">
+              <mat-label>Penulis</mat-label>
+              <input formControlName="author" matInput placeholder="Ex. Adit P.">
+              <mat-error *ngIf="fc.author.invalid && (fc.author.dirty || fc.author.touched)">
+                <div *ngIf="fc.author.errors.required">Author is required.</div>
+                <div *ngIf="fc.author.errors.minlength">Author must be at least 4 characters long.</div>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+
 
           <mat-form-field class="example-full-width">
             <mat-label>URL Buku</mat-label>
@@ -29,20 +42,20 @@
 
             <!-- is invalid? -->
             <mat-error *ngIf="fc.bookURL.invalid && (fc.bookURL.dirty || fc.bookURL.touched)">
-                <div *ngIf="fc.bookURL.errors.required">Book Link is required.</div>
-                <div *ngIf="fc.bookURL.errors.pattern">please insert valid URL.</div>
+              <div *ngIf="fc.bookURL.errors.required">Book Link is required.</div>
+              <div *ngIf="fc.bookURL.errors.pattern">please insert valid URL.</div>
             </mat-error>
 
           </mat-form-field>
 
-          
+
           <div fxLayout="row" fxLayoutAlign="start center">
             <mat-error fxFlex>
               <div *ngIf="fg.invalid"> ups, mohon isi semua field diatas.</div>
             </mat-error>
             <button mat-raised-button [disabled]="fg.invalid">Submit</button>
           </div>
-          
+
         </form>
       </mat-expansion-panel>
 
@@ -58,32 +71,42 @@
         </mat-card-header>
         <mat-card-content>
 
-          <!-- TABLE -->
-          <table>
-            <thead>
-              <tr>
-                <th>Like Count</th>
-                <th>Book Name</th>
-                <th>URL</th>
-                <th>Vote</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let article of sortedArticles(); let i = index">
-                <td><b>{{article.votes}}</b></td>
-                <td>{{article.title}}</td>
-                <td><a href="{{article.link}}" target="_blank">{{article.link}}</a></td>
-                <td>
-                  <button (click)="voteDown(article)" mat-icon-button color="warn">
-                    <mat-icon>thumb_down</mat-icon>
-                  </button>
-                  <button (click)="voteUp(article)" mat-icon-button color="primary">
-                    <mat-icon>thumb_up</mat-icon>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div *ngIf="books">
+            <table>
+              <thead>
+                <tr>
+                  <th>Like Count</th>
+                  <th>Book Name</th>
+                  <th>Author</th>
+                  <th>URL</th>
+                  <th>Vote</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let b of sorterBooks(); let i = index">
+                  <td><b>{{b.votes}}</b></td>
+                  <td>{{b.title}}</td>
+                  <td>{{b.author}}</td>
+                  <td><a href="{{b.link}}" target="_blank">
+                      <mat-icon>public</mat-icon>
+                    </a></td>
+                  <td>
+                    <button (click)="voteDown(b)" mat-icon-button color="warn">
+                      <mat-icon>thumb_down</mat-icon>
+                    </button>
+                    <button (click)="voteUp(b)" mat-icon-button color="primary">
+                      <mat-icon>thumb_up</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          
+          <div *ngIf="books.length == 0">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </div>
         </mat-card-content>
       </mat-card>
 

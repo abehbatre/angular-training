@@ -1,10 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Article } from './materi1.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomDialog } from 'src/app/shared/widgets/dialog/dialog.component';
-
-
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-materi1',
@@ -13,50 +11,45 @@ import { CustomDialog } from 'src/app/shared/widgets/dialog/dialog.component';
 })
 export class Materi1Component implements OnInit {
 
-  articles: Article[];
+  books: any = [];
   fg: FormGroup;
   get fc() { return this.fg.controls; } // helper formControl
   patternURL = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
   constructor(
     private fb: FormBuilder,
-    public dialog: MatDialog
-  ) {
-    
-    // validationon init
+    private apiService: ApiService,
+    public dialog: MatDialog,
+  ) { }
+
+  ngOnInit() {
+
+    this.getBooks();
+
     this.fg = this.fb.group({
       'bookName': new FormControl('', [Validators.required, Validators.minLength(4),]),
+      'author': new FormControl('', [Validators.required, Validators.minLength(4),]),
       'bookURL': new FormControl('', [Validators.required, Validators.pattern(this.patternURL),]),
-    })
+    });
   }
 
-  ngOnInit() { }
 
-
-  DUMMY_DATA: Article[] = [
-    { title: 'Angular 2', link: 'http://angular.io', votes: 3 },
-    { title: 'Fullstack', link: 'http://fullstack.io', votes: 2 },
-    { title: 'Adit Web', link: 'https://adit.web.id', votes: 1 },
-  ];
-
-
-
-  voteUp(article: Article): void { article.votes += 1 }
-  voteDown(article: Article): void { article.votes -= 1 }
-  
-  sortedArticles(): Article[] {
-    return this.DUMMY_DATA.sort((a: Article, b: Article) => b.votes - a.votes);
+  // GET BOOKS LIST 
+  getBooks() {
+    this.apiService.getBooks().subscribe((data: {}) => {
+      console.log(data);
+      this.books = data;
+    });
   }
 
-  getDomain(article: Article): string {
-    try {
-      const domainAndPath: string = article.link.split('//')[1];
-      return domainAndPath.split('/')[0];
-    } catch (err) {
-      return null;
-    }
+  // FUNCTION FOR BOOKS
+  voteUp(b): void { b.votes += 1 }
+  voteDown(b): void { b.votes -= 1 }
+  sorterBooks(): any[] {
+    return this.books.sort((a, b) => b.votes - a.votes);
   }
 
+  // ADD NEW BOOK
   onSubmit() {
     if (this.fg.invalid) return; // check validation first ...
 
@@ -70,13 +63,13 @@ export class Materi1Component implements OnInit {
     }
 
     const temp = { title: _bookName, link: _bookURL, votes: 0 }
-    this.DUMMY_DATA.push(temp)
+    this.books.push(temp)
 
     this.showDialog('Berhasil', 'buku ' + _bookName + ' telah ditambahkan');
     this.fg.reset();
   }
 
-  showDialog(title: string, msg: string) {
+  private showDialog(title: string, msg: string) {
     this.dialog.open(CustomDialog, {
       data: { title: title, msg: msg, }
     });

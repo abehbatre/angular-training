@@ -22,7 +22,14 @@ export class ApiService {
 
   getProfile(): Observable<any> {
     return this.http.get(BASE_URL + 'profile').pipe(
-      map(this.extractData));
+      map(this.extractData)
+    );
+  }
+
+  getBooks(): Observable<any> {
+    return this.http.get(BASE_URL + 'book').pipe(
+      map(this.extractData)
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
