@@ -22,7 +22,8 @@ export class Materi1Component implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog
   ) {
-    // validation 
+    
+    // validationon init
     this.fg = this.fb.group({
       'bookName': new FormControl('', [Validators.required, Validators.minLength(4),]),
       'bookURL': new FormControl('', [Validators.required, Validators.pattern(this.patternURL),]),

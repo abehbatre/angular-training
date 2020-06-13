@@ -10,3 +10,8 @@ code {
   color: crimson;
   margin-left: 10px;
 }
+
+mat-icon {
+  margin-right: 10px;
+  margin-top: -2px;
+}
