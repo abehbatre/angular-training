@@ -46,7 +46,7 @@ export class Materi2Component implements OnInit {
       'password': new FormControl('', [Validators.compose([Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[!@#\$%\^&\*])(?=.{6,})/)])]),
       'repassword': new FormControl('', [Validators.required]),
       'address': new FormControl('',),
-      'phoneNumber': new FormControl('', [Validators.compose([Validators.required, phoneNumberValidator])]),
+      'phoneNumber': new FormControl('', [Validators.required]),
     }, { validator: MustMatch('password', 'repassword') });
 
   }

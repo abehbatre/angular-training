@@ -1,0 +1,98 @@
+<div class="adit-top">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>title</mat-card-title>
+      <mat-card-subtitle>subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form name="form" [formGroup]="fg" #formDir="ngForm" (ngSubmit)="onSubmit()">
+        <!-- email address -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Email Address</mat-label>
+          <input [(ngModel)]="employees.emailAddress" formControlName="emailAddress" matInput
+            placeholder="Ex. example@domain.com">
+          <!-- isValid? -->
+          <mat-error *ngIf="fc.emailAddress.invalid && (fc.emailAddress.dirty || fc.emailAddress.touched)">
+            <div *ngIf="fc.emailAddress.errors.required">Email Address is required.</div>
+            <div *ngIf="fc.emailAddress.errors.minlength">Email Address must be at least 4 characters long.</div>
+            <div *ngIf="fc.emailAddress.errors.email">Invalid Email Address format.</div>
+          </mat-error>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+          <!-- first name -->
+          <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input [(ngModel)]="employees.firstName" formControlName="firstName" matInput placeholder="Ex. Adit">
+            <!-- isValid? -->
+            <mat-error *ngIf="fc.firstName.invalid && (fc.firstName.dirty || fc.firstName.touched)">
+              <div *ngIf="fc.firstName.errors.required">First Name is required.</div>
+              <div *ngIf="fc.firstName.errors.minlength">First Name must be at least 4 characters long.</div>
+              <div *ngIf="fc.firstName.errors.email">Invalid First Name format.</div>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- last name -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input [(ngModel)]="employees.lastName" formControlName="lastName" matInput placeholder="Ex. Psgt">
+            <!-- isValid? -->
+            <mat-error *ngIf="fc.lastName.invalid && (fc.lastName.dirty || fc.lastName.touched)">
+              <div *ngIf="fc.lastName.errors.required">Last Name is required.</div>
+              <div *ngIf="fc.lastName.errors.minlength">Last Name must be at least 4 characters long.</div>
+              <div *ngIf="fc.lastName.errors.email">Invalid Last Name format.</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+          <!-- password -->
+          <mat-form-field class="example-full-width">
+            <mat-label>New Password</mat-label>
+            <input [(ngModel)]="employees.password" type="password" formControlName="password" matInput placeholder="***">
+            <!-- isValid? -->
+            <mat-error *ngIf="fc.password.invalid && (fc.password.dirty || fc.password.touched)">
+              <div *ngIf="fc.password.errors.required">Password is required.</div>
+              <div *ngIf="fc.password.errors.minlength">Password must be at least 6 characters long.</div>
+              <div *ngIf="fc.password.errors.pattern">
+                Password must contain letters, numbers, and symbol, min 6 characters.</div>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- repeat password -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Repeat Password</mat-label>
+            <input [(ngModel)]="employees.repeatPassword" formControlName="repassword" matInput
+              type="password" placeholder="Ex. ***">
+            <!-- isValid? -->
+            <mat-error *ngIf="fc.repassword.invalid && (fc.repassword.dirty || fc.repassword.touched)">
+              <div *ngIf="fc.repassword.errors.required">Repeat Password is required</div>
+              <div *ngIf="fc.repassword.errors.mustMatch">Passwords not match</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Address</mat-label>
+          <input [(ngModel)]="employees.address" formControlName="address" matInput
+            placeholder="1234 Main St Apartment, studio, or floor">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Phone Number</mat-label>
+          <span matPrefix>+62 &nbsp;</span>
+          <input [(ngModel)]="employees.phoneNumber" type="tel" formControlName="phoneNumber" matInput maxlength="11"
+            placeholder="555-555-1234">
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-error fxFlex>
+            <div *ngIf="fg.invalid"> ups, mohon isi semua field diatas.</div>
+          </mat-error>
+          <button mat-raised-button [disabled]="fg.invalid">Submit</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

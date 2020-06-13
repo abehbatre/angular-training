@@ -21,7 +21,7 @@ export class MockService implements InMemoryDbService {
         password: '_Ab1G8J2C_n84Yn',
         repeatPassword: '_Ab1G8J2C_n84Yn',
         address: '06423 Humaira Mission South Dinashire, OK 07599',
-        phoneNumber: '+62 435 4738 2060',
+        phoneNumber: '85242187852',
       },
       {
         id: 2,
@@ -31,7 +31,7 @@ export class MockService implements InMemoryDbService {
         password: '4UFf5AwYLWtbyyc',
         repeatPassword: '4UFf5AwYLWtbyyc',
         address: '345 Wibowo Crest Jaballand, WV 99982',
-        phoneNumber: '+62 29 1230 4403',
+        phoneNumber: '85217087944',
       },
     ];
     return { employees: employees };

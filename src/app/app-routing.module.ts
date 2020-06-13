@@ -4,6 +4,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DefaultComponent } from './layout/default/default.component';
 import { Materi1Component } from './modules/materi-1/materi1.component';
 import { Materi2Component } from './modules/materi-2/materi2.component';
+import { EmployeeEditComponent } from './modules/materi-2/employee-edit/employee-edit.component';
 
 
 const routes: Routes = [{
@@ -19,6 +20,10 @@ const routes: Routes = [{
   {
     path: 'materi-2',
     component: Materi2Component
+  },
+  {
+    path: 'materi-2/edit/:id',
+    component: EmployeeEditComponent
   },
   ]
 }];

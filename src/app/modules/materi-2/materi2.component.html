@@ -56,10 +56,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Password</mat-label>
               <input formControlName="password" [type]="hide ? 'password' : 'text'" matInput placeholder="***">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
+            
               <!-- isValid? -->
               <mat-error *ngIf="fc.password.invalid && (fc.password.dirty || fc.password.touched)">
                 <div *ngIf="fc.password.errors.required">Password is required.</div>
@@ -89,12 +86,10 @@
           <mat-form-field class="example-full-width">
             <mat-label>Phone Number</mat-label>
             <span matPrefix>+62 &nbsp;</span>
-            <input type="number" formControlName="phoneNumber" matInput placeholder="555-555-1234">
+            <input type="number" formControlName="phoneNumber" matInput placeholder="555-555-1234" maxlength="11">
             <!-- isValid? -->
             <mat-error *ngIf="fc.phoneNumber.invalid && (fc.phoneNumber.dirty || fc.phoneNumber.touched)">
               <div *ngIf="fc.phoneNumber.errors.required">Phone Number is required</div>
-              <div *ngIf="fc.phoneNumber.errors.invalidPhone" class="ui error message">Invalid phone number, must begin
-                with <span>+62</span></div>
             </mat-error>
           </mat-form-field>
 
@@ -140,7 +135,7 @@
                   <td>{{e.firstName + ' ' + e.lastName}}</td>
                   <td>{{e.password}}</td>
                   <td>{{e.address}}</td>
-                  <td>{{e.phoneNumber}}</td>
+                  <td>+62{{e.phoneNumber}}</td>
                   <td>
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                       <mat-icon>more_vert</mat-icon>
@@ -150,7 +145,7 @@
                         <mat-icon>launch</mat-icon>
                         <span>Detail</span>
                       </button>
-                      <button mat-menu-item>
+                      <button routerLink="/materi-2/edit/{{e.id}}" mat-menu-item>
                         <mat-icon>history_edu</mat-icon>
                         <span>Edit</span>
                       </button>

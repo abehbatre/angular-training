@@ -37,8 +37,10 @@
 
           
           <div fxLayout="row" fxLayoutAlign="start center">
-            
-            <button (click)="onSubmit()"  mat-raised-button>Submit</button>
+            <mat-error fxFlex>
+              <div *ngIf="fg.invalid"> ups, mohon isi semua field diatas.</div>
+            </mat-error>
+            <button mat-raised-button [disabled]="fg.invalid">Submit</button>
           </div>
           
         </form>
