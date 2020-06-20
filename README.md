@@ -3,8 +3,9 @@
 
 ![sreenshoot](https://raw.githubusercontent.com/abehbatre/angular-training/master/ss.png)
 
+> Sofco Challenge 1 day with angular 
 
-- Complte all try it on angular.io
+- Complete all try it on angular.io
 - Angular Material + fxLayout 
 - Resful API 
 
